@@ -1,0 +1,85 @@
+{
+	"rules": [
+		{
+			"code": "PAGO_CREDITO",
+			"description": "Pago con credito",
+			"type": "EQUALS",
+			"field": "PAYMENT.method",
+			"value": "CREDIT"
+		},
+		{
+			"code": "CREDITO_NO_MACRO",
+			"type": "AND",
+			"rules": [
+				"PAGO_CREDITO",
+				{
+					"type": "DISTINCT",
+					"field": "PAYMENT.entity",
+					"description": "Banco Macro",
+					"value": "MACRO"
+				}
+			]
+		}
+	],
+	"offers": [
+		{
+			"code": "OF0001",
+			"description": "30% de descuento comprando con cualquier tarjeta de credito excepto Macro",
+			"discount": {
+				"type": "CART_PERCENTAGE",
+				"value": 30
+			},
+			"rule": "CREDITO_NO_MACRO"
+		},
+		{
+			"code": "OF0002",
+			"description": "Los jueves, 1% de descuento en productos que cuestan menos de $175",
+			"discount": {
+				"type": "PRODUCT_PERCENTAGE",
+				"value": 1
+			},
+			"rule": {
+				"type": "AND",
+				"rules": [
+					{
+						"description": "Cuesta menos de $175",
+						"type": "LOWER",
+						"field": "PRODUCT.price",
+						"value": 175
+					},
+					{
+						"description": "Es jueves",
+						"field": "CALENDAR.week_day",
+						"type": "EQUALS",
+						"value": "Thursday"
+					}
+				]
+			}
+		},
+		{
+			"code": "OF0003",
+			"description": "Los viernes, 10% de descuento en productos con 10.5% de IVA",
+			"discount": {
+				"type": "CART_PERCENTAGE",
+				"value": 10
+			},
+			"rule": {
+				"type": "AND",
+				"rules": [
+					{
+						"description": "Tasado 10.5% de IVA",
+						"type": "EQUALS",
+						"field": "PRODUCT.iva_percentage",
+						"value": 10.5
+					},
+					{
+						"description": "Es viernes",
+						"field": "CALENDAR.week_day",
+						"type": "EQUALS",
+						"value": "Friday"
+					}
+				]
+			}
+		}
+	]
+}

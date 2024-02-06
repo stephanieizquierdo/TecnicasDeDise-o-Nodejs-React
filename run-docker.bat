@@ -1,0 +1,1 @@
+docker container run -p 4000:4000 -p 3000:3000 --rm docker-expressjs-react

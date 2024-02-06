@@ -1,0 +1,26 @@
+{
+    "compuesta":{
+        "type": "OR",
+        "rules": ["R1", "R2"]
+    },
+    "compuesta_con_una_ref":{
+        "type": "NOT",
+        "rules": "R1"
+    },
+    "simples":[
+        {
+            "code": "R1",
+            "description": "PRODUCTO ES CATEGORIA LACTEO",
+            "type": "EQUALS",
+            "field": "PRODUCT.category.code",
+            "value": "X033AXX"
+        },
+        {
+            "code": "R2",
+            "description": "PRODUCTO ES CATEGORIA LACTEO",
+            "type": "EQUALS",
+            "field": "PRODUCT.category.code",
+            "value": "X033AXX"
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+node_modules
+BACK/node_modules
+front/node_modules
+.DS_STORE

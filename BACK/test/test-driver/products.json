@@ -1,0 +1,100 @@
+[
+	{
+		"name": "Leche Descremada 1L, la Calmisima",
+		"brand": {
+			"code": "Z001ABC",
+			"name": "La Calmisima"
+		},
+		"category": {
+			"code": "X033AXX",
+			"name": "Lacteo"
+		},
+		"price": 25.4,
+		"iva_percentage": 10.5,
+		"code": "AAR453J"
+	},
+	{
+		"name": "Leche Chocolatada 1L, la Calmisima",
+		"brand": {
+			"code": "Z001ABC",
+			"name": "La Calmisima"
+		},
+		"category": {
+			"code": "X033AXX",
+			"name": "Lacteo"
+		},
+		"price": 200.4,
+		"iva_percentage": 10.5,
+		"code": "AAR454J"
+	},
+	{
+		"name": "Leche Chocolatada 1/2L, la Calmisima",
+		"brand": {
+			"code": "Z001ABC",
+			"name": "La Calmisima"
+		},
+		"category": {
+			"code": "X033AXX",
+			"name": "Lacteo"
+		},
+		"price": 150.4,
+		"iva_percentage": 10.5,
+		"code": "AAR455J"
+	},
+	{
+		"name": "Cola 1L",
+		"brand": {
+			"code": "Z002ABC",
+			"name": "Colla"
+		},
+		"category": {
+			"code": "X001BXX",
+			"name": "Gaseosas"
+		},
+		"price": 50.4,
+		"iva_percentage": 10.5,
+		"code": "ABR000J"
+	},
+	{
+		"name": "Naranja 1L",
+		"brand": {
+			"code": "Z002ABC",
+			"name": "Colla"
+		},
+		"category": {
+			"code": "X001BXX",
+			"name": "Gaseosas"
+		},
+		"price": 50.4,
+		"iva_percentage": 10.5,
+		"code": "ABR001J"
+	},
+	{
+		"name": "Lima 1L",
+		"brand": {
+			"code": "Z002ABC",
+			"name": "Colla"
+		},
+		"category": {
+			"code": "X001BXX",
+			"name": "Gaseosas"
+		},
+		"price": 50.4,
+		"iva_percentage": 10.5,
+		"code": "ABR002J"
+	},
+	{
+		"name": "Pomelo 1L",
+		"brand": {
+			"code": "Z002ABC",
+			"name": "Colla"
+		},
+		"category": {
+			"code": "X001BXX",
+			"name": "Gaseosas"
+		},
+		"price": 50.4,
+		"iva_percentage": 10.5,
+		"code": "ABR004J"
+	}
+]

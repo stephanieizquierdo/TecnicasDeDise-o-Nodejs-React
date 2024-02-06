@@ -1,0 +1,7 @@
+{
+    "code": "PRODUCTO_LACTEO",
+    "description": "PRODUCTO ES CATEGORIA LACTEO",
+    "type": "EQUALS",
+    "field": "PRODUCT.category.code",
+    "value": "X033AXX"
+}

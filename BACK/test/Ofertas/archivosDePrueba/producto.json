@@ -1,0 +1,14 @@
+	{
+		"name": "Leche Descremada 1L, la Calmisima",
+		"brand": {
+			"code": "Z001ABC",
+			"name": "La Calmisima"
+		},
+		"category": {
+			"code": "X033AXX",
+			"name": "Lacteo"
+		},
+		"price": 25.4,
+		"iva_percentage": 10.5,
+		"code": "AAR453J"
+	}

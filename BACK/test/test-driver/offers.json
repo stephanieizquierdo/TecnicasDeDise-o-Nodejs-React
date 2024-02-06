@@ -1,0 +1,218 @@
+{
+	"rules": [
+		{
+			"code": "ES_COCA_COLA_1L",
+			"description": "GASEOSA COCA COLA 1L",
+			"type": "EQUALS",
+			"field": "PRODUCT.code",
+			"value": "ABR000J"
+		},
+		{
+			"code": "PRODUCTO_GASEOSA",
+			"description": "PRODUCTO ES CATEGORIA GASEOSA",
+			"type": "EQUALS",
+			"field": "PRODUCT.category.code",
+			"value": "X001BXX"
+		},
+		{
+			"code": "MES_FEBRERO",
+			"description": "EL MES ES FEBRERO",
+			"type": "EQUALS",
+			"field": "CALENDAR.month",
+			"value": 2
+		},
+		{
+			"code": "MES_JUNIO",
+			"description": "EL MES ES JUNIO",
+			"type": "EQUALS",
+			"field": "CALENDAR.month",
+			"value": 6
+		},
+		{
+			"code": "MES_JULIO",
+			"description": "EL MES ES JULIO",
+			"type": "EQUALS",
+			"field": "CALENDAR.month",
+			"value": 7
+		},
+		{
+			"code": "PRODUCTO_LACTEO",
+			"description": "PRODUCTO ES CATEGORIA LACTEO",
+			"type": "EQUALS",
+			"field": "PRODUCT.category.code",
+			"value": "X033AXX"
+		},
+		{
+			"code": "PRICE_LOWER_10000",
+			"description": "Producto con precio menor a 10000",
+			"type": "LOWER",
+			"field": "PRODUCT.price",
+			"value": 10000
+		},
+		{
+			"code": "PRICE_HIGHER_50000",
+			"description": "Producto con precio menor a 50000",
+			"type": "HIGHER",
+			"field": "PRODUCT.price",
+			"value": 50000
+		},
+		{
+			"code": "PRODUCTO_NO_PHILLEP",
+			"description": "Producto no es marca Phillep",
+			"type": "DISTINCT",
+			"field": "PRODUCT.brand.code",
+			"value": "HHGFDP"
+		},
+		{
+			"code": "PAGO_MACRO",
+			"description": "Pago con tarjeta de banco macro",
+			"type": "EQUALS",
+			"field": "PAYMENT.entity",
+			"value": "MACRO"
+		},
+		{
+			"code": "PAGO_TARJETA_DEBITO_CREDITO",
+			"description": "Pago con tarjeta debito o credito",
+			"type": "IN",
+			"field": "PAYMENT.method",
+			"value": ["CREDIT", "DEBIT"]
+		},
+		{
+			"code": "PAGO_EFECTIVO",
+			"description": "Pago en efectivo",
+			"type": "EQUALS",
+			"field": "PAYMENT.method",
+			"value": "CASH"
+		},
+		{
+			"type": "AND",
+			"code": "PAGO_TARJETA_MACRO",
+			"rules": ["PAGO_MACRO", "PAGO_TARJETA_DEBITO_CREDITO"]
+		},
+		{
+			"type": "NOT",
+			"code": "NO_MACRO",
+			"rules": "PAGO_MACRO"
+		}
+	],
+	"offers": [
+		{
+			"description": "25% de descuento en las compras de Julio pagando con credito o debito Macro",
+			"code": "OF0001",
+			"rule": {
+				"type": "AND",
+				"code": "PAGO_MACRO_EN_JULIO",
+				"rules": [
+				"PAGO_TARJETA_MACRO",
+				"MES_JULIO"]
+			},
+			"discount": {
+				"type": "CART_PERCENTAGE",
+				"value": 25
+			}
+		},
+		{
+			"description": "7 pesos de descuento en gaseosas excepto la Coca Cola de 1L",
+			"code": "OF0002",
+			"rule": {
+				"type": "AND",
+				"code": "GASEOSA_EXCEPTO_COCA",
+				"rules": [{
+					"code": "NO_ES_COCA_COLA_1L",
+					"type": "NOT",
+					"rules": "ES_COCA_COLA_1L"
+				}, 
+				"PRODUCTO_GASEOSA",
+				"MES_JUNIO"]
+			},
+			"discount": {
+				"type": "FIX",
+				"value": 7
+			}
+		},
+		{
+			"description": "10% de descuento en lácteos durante febrero",
+			"code": "OF0003",
+			"rule": {
+				"type": "AND",
+				"code": "LACTEO_FEBRERO",
+				"rules": ["PRODUCTO_LACTEO", "MES_FEBRERO"]
+			},
+			"discount": {
+				"type": "PRODUCT_PERCENTAGE",
+				"value": 10
+			}
+		},
+		{
+			"description":
+				"Los Lunes y Miércoles de Febrero, los productos de marca: LA CALMISIMA (codigo 0088ABC) tienen un 15% de descuento solo pagando con CREDITO O DEBITO DEL BANCO GALICIA",
+			"code": "OF0004",
+			"rule": {
+				"type": "AND",
+				"rules": [
+					{
+						"type": "OR",
+						"rules": [
+							{
+								"type": "EQUALS",
+								"description": "DIA LUNES",
+								"field": "CALENDAR.week_day",
+								"value": "Monday"
+							},
+							{
+								"type": "EQUALS",
+								"description": "DIA MIERCOLES",
+								"field": "CALENDAR.week_day",
+								"value": "Wednesday"
+							}
+						]
+					},
+					{
+						"type": "AND",
+						"rules": [
+							{
+								"type": "EQUALS",
+								"description": "AÑO 2022 ",
+								"field": "CALENDAR.year",
+								"value": 2022
+							},
+							{
+								"type": "EQUALS",
+								"description": "FEBRERO",
+								"field": "CALENDAR.month",
+								"value": 2
+							},
+							{
+								"type": "EQUALS",
+								"description": "ES MARCA LA CALMISIMA",
+								"field": "PRODUCT.brand.code",
+								"value": "Z001ABC"
+							}
+						]
+					},
+					{
+						"type": "AND",
+						"rules": [
+							{
+								"type": "EQUALS",
+								"description": "Banco Galcia",
+								"field": "PAYMENT.entity",
+								"value": "Galicia"
+							},
+							{
+								"type": "EQUALS",
+								"description": "pago con tarjeta de credito ",
+								"field": "PAYMENT.method",
+								"value": "CREDIT"
+							}
+						]
+					}
+				]
+			},
+			"discount": {
+				"type": "PRODUCT_PERCENTAGE",
+				"value": 15
+			}
+		}
+	]
+}

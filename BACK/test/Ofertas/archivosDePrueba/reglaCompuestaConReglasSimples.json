@@ -1,0 +1,17 @@
+{
+    "type": "OR",
+    "rules": [
+        {
+            "type": "EQUALS",
+            "description": "DIA LUNES",
+            "field": "CALENDAR.week_day",
+            "value": "MONDAY"
+        },
+        {
+            "type": "EQUALS",
+            "description": "DIA MIERCOLES",
+            "field": "CALENDAR.week_day",
+            "value": "WEDNESDAY"
+        }
+    ]
+}
